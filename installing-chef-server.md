@@ -1,18 +1,5 @@
 # Installing chef-server in AWS EC2 ubuntu 18.x
 
-
-## Install required packages
-
-    sudo apt-get update -y
-    sudo apt-get upgrade -y
-    wget https://packages.chef.io/files/stable/chef-server/12.18.14/ubuntu/18.04/chef-server-core_12.18.14-1_amd64.deb
-    sudo dpkg -i chef-server-core_12.18.14-1_amd64.deb
-    rm chef-server-core_12.18.14-1_amd64.deb
-    sudo chef-server-ctl reconfigure
-    mkdir .chef
-    sudo chef-server-ctl user-create <user> <first_name> <last_name> <email@company.com> '<password>' --filename ~/.chef/<user>.pem
-    sudo chef-server-ctl org-create <org_name> "<org_name_detailed>" --association_user <user> --filename ~/.chef/<org_name>.pem
-
 ## Configure `hosts` & `hostname`
 
     By default these will take the internal ip of the ec2. This is one of the stopping point or hard thing to go through.
@@ -37,9 +24,17 @@
 
     sudo reboot
 
-## Reconfigure the chef-server-ctl
+## Install required packages
 
+    sudo apt-get update -y
+    sudo apt-get upgrade -y
+    wget https://packages.chef.io/files/stable/chef-server/12.18.14/ubuntu/18.04/chef-server-core_12.18.14-1_amd64.deb
+    sudo dpkg -i chef-server-core_12.18.14-1_amd64.deb
+    rm chef-server-core_12.18.14-1_amd64.deb
     sudo chef-server-ctl reconfigure
+    mkdir .chef
+    sudo chef-server-ctl user-create <user> <first_name> <last_name> <email@company.com> '<password>' --filename ~/.chef/<user>.pem
+    sudo chef-server-ctl org-create <org_name> "<org_name_detailed>" --association_user <user> --filename ~/.chef/<org_name>.pem
 
 There you go, you're all set.
 
