@@ -5,6 +5,7 @@
 
 # Create `.chef` directory
 This is required to hold the `pems` and `knife.rb`
+    
     ~/chef-repo/
     mkdir .chef
 
@@ -30,6 +31,8 @@ This is required to hold the `pems` and `knife.rb`
 
     cd ~/chef-repo
     knife ssl fetch
+
+This will create a folder under .chef/ as `trusted_certs` and will copy the `<server_ip>.crt`
 
 # Check certificates
     cd ~/chef-repo
